@@ -4,7 +4,7 @@
         "title": "Juhannuskauppa2025",
         "label": "Juhannuskauppa2025",
         "cover": "/static/assets/covers/JuhannusKauppa2025.png",
-        "desc": "juha nus kaoupa",
+        "description": "juha nus kaoupa",
         "downloads": {
             "en": "no",
             "fi": "no"
@@ -14,7 +14,7 @@
         "title": "Juhannuskauppa2025",
         "label": "Juhannuskauppa2025",
         "cover": "/static/assets/covers/JuhannusKauppa2025.png",
-        "desc": "juha nus kaoupa",
+        "description": "juha nus kaoupa",
         "downloads": {
             "en": "no",
             "fi": "no"

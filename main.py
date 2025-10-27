@@ -89,9 +89,23 @@ def addgames():
     addgame(gm)
     return "done"
 
-@app.route("/admin/gamemanager")
+@app.route("/admin/gamemanager", methods=['POST', 'GET'])
 def gamemanager():
-    return flask.render_template("gamemanager.html")
+    if flask.request.method == "GET":
+        return flask.render_template("gamemanager.html")
+    else:
+        game = games[flask.request.form["game"]]
+        return flask.render_template("gamemanager.html", game=game)
+
+@app.route("/api/update", methods=["POST"])
+def update():
+    
+    payload = str(flask.request.json)
+    if "https://github.com/enorsu" in payload:
+        print("success, updating")
+        return "", 202
+    else:
+        return "fail", 400
 
 @app.errorhandler(404)
 def page_not_found(e):

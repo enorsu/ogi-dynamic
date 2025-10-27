@@ -22,39 +22,47 @@
         </div>
         <br>
         <div class="main">
+        <form method="post" action="/admin/gamemanager">
+            <input type="text" placeholder="game name" name="game">
+            <button type="submit">load</button>
+        </form>
         <form method="post" action="/api/addgame" class="form">
             <label for="title" >title:</label>
-            <input type="text" name="title">
+            <input type="text" name="title" value="{%+ if game %} {{ game['title'] }} {% endif %}">
 
             <br>
 
             <label for="desc">desc:</label>
-            <textarea name="desc"></textarea>
+            <textarea name="desc" id="desc" ></textarea>
 
             <br>
 
             <label for="cover">cover art link:</label>
-            <input type="text" name="cover">
+            <input type="text" name="cover" value="{%+ if game %} {{ game['cover'] }} {% endif %}">
 
             <br>
 
             <label for="dl-fi">dl-fi:</label>
-            <input type="text" name="dl-fi">
+            <input type="text" name="dl-fi" value="{%+ if game %}  {{ game['downloads']['fi'] }} {% endif %}">
 
             <br>
 
             <label for="dl-en">dl-en:</label>
-            <input type="text" name="dl-en">
+            <input type="text" name="dl-en" value="{%+ if game %} {{ game['downloads']['en'] }} {% endif %}">
 
             <br>
 
             <label for="label">label:</label>
-            <input type="text" name="label">
+            <input type="text" name="label" value="{%+ if game %} {{ game['label'] }} {% endif %}">
 
             <br>
             <button type="submit" style="cursor: pointer;" class="form-btn">submit</button>
         </form>
-
         </div>
+        {% if game["description"] +%}
+        <script>
+            document.getElementById("desc").value = "{{ game['description'] }}"
+        </script>
+        {% endif %}
     </body>
 </html>
