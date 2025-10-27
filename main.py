@@ -61,10 +61,12 @@ app = flask.Flask(__name__)
 def index():
     return flask.redirect("/static/index.html", code=200)
 
-@app.route("/downloads")
+@app.route("/pages/downloads")
 def downloads():
     temp = games
-    temp.pop("counter")
+    print(temp)
+    temp.pop("counter") 
+    print(temp)
     return flask.render_template("dl.html", games=temp)
 
 @app.route("/form")
@@ -90,6 +92,11 @@ def addgames():
 @app.route("/admin/gamemanager")
 def gamemanager():
     return flask.render_template("gamemanager.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return flask.render_template('404.html'), 404
 
 
 
