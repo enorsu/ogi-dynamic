@@ -13,7 +13,9 @@ def loadJsonFile(filename, raw = False):
             return json.loads(s.read())
 def refreshGamesJson():
     global games
+    global passkey
     games = loadJsonFile("games.json")
+    passkey = loadJsonFile("config.json")["passkey"]
 
 def initlogging():
     logging.basicConfig(format = "{asctime} - {levelname} - {message}", style = "{", datefmt = "%Y-%m-%d %H:%M", filename="app.log", encoding="utf-8",  filemode="a", level=logging.DEBUG)
@@ -89,6 +91,9 @@ def downloadsraw():
 @app.route('/api/addgame', methods=['POST'])
 def addgames():
     data = flask.request.form
+    if not data["passkey"] == passkey:
+        return "not authorized"
+        
     gm = generateGame(title=data["title"], desc=data["desc"], dl_en=data["dl-en"], dl_fi=data["dl-fi"], cover=data["cover"], label=data["label"])
     addgame(gm)
     return "done"
@@ -96,8 +101,8 @@ def addgames():
 @app.route("/admin/gamemanager", methods=['POST', 'GET'])
 def gamemanager():
     if flask.request.method == "GET":
-        return flask.render_template("gamemanager.html")
-    else:
+        return flask.render_template("gamemanager.html", game=generateGame("", "", "", "", "", ""))
+    elif flask.request.method == "POST":
         game = games[flask.request.form["game"]]
         return flask.render_template("gamemanager.html", game=game)
 

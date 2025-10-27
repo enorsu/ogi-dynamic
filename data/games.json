@@ -1,5 +1,5 @@
 {
-    "counter": 3,
+    "counter": 4,
     "1": {
         "title": "Juhannuskauppa2025",
         "label": "Juhannuskauppa2025",
@@ -28,6 +28,16 @@
         "downloads": {
             "fi": "eeee",
             "en": "eee"
+        }
+    },
+    "4": {
+        "title": " Juhannuskauppa2025 ",
+        "label": " Juhannuskauppa2025 ",
+        "cover": " /static/assets/covers/JuhannusKauppa2024.png ",
+        "description": "juha nus kaoupa",
+        "downloads": {
+            "fi": "  no ",
+            "en": " no "
         }
     }
 }
