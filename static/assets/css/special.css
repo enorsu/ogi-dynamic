@@ -1,0 +1,14 @@
+
+.form {
+    scale: 1;
+    display: grid;
+
+    width: 300px;
+}
+
+
+.form > input {
+    field-sizing: 200px;
+
+}
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Old-Games Inc</title>
+        <link
+        rel="stylesheet"
+        href="https://unpkg.com/xp.css">
+        <link rel="stylesheet" href="/static/assets/css/index.css">
+        <link rel="stylesheet" href="/static/assets/css/about.css">
+        <link rel="stylesheet" href="/static/assets/css/special.css">
+        <script src="/assets/js/hrefbutton.js" defer></script>
+
+    </head>
+    <body>
+
+        <div class="header">
+            <h1>Old-Games Inc</h1>
+            <h3 style="color: red;">admin gamemanager</h3>
+            <nav>
+                <button aria-label="/static/index.html" class="href-btn">back to index</button>
+            </nav>
+        </div>
+        <br>
+        <div class="main">
+        <form method="post" action="/api/addgame" class="form">
+            <label for="title" >title:</label>
+            <input type="text" name="title">
+
+            <br>
+
+            <label for="desc">desc:</label>
+            <textarea name="desc"></textarea>
+
+            <br>
+
+            <label for="cover">cover art link:</label>
+            <input type="text" name="cover">
+
+            <br>
+
+            <label for="dl-fi">dl-fi:</label>
+            <input type="text" name="dl-fi">
+
+            <br>
+
+            <label for="dl-en">dl-en:</label>
+            <input type="text" name="dl-en">
+
+            <br>
+
+            <label for="label">label:</label>
+            <input type="text" name="label">
+
+            <br>
+            <button type="submit" style="cursor: pointer;" class="form-btn">submit</button>
+        </form>
+
+        </div>
+    </body>
+</html>

@@ -87,6 +87,10 @@ def addgames():
     addgame(gm)
     return "done"
 
+@app.route("/admin/gamemanager")
+def gamemanager():
+    return flask.render_template("gamemanager.html")
+
 
 
 app.run(port=8000)

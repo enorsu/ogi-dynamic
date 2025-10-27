@@ -1,5 +1,5 @@
 {
-    "counter": 2,
+    "counter": 1,
     "1": {
         "title": "Juhannuskauppa2025",
         "label": "Juhannuskauppa2025",
@@ -8,16 +8,6 @@
         "downloads": {
             "en": "no",
             "fi": "no"
-        }
-    },
-    "2": {
-        "title": "h",
-        "label": "h",
-        "cover": "h",
-        "description": "h",
-        "downloads": {
-            "fi": "h",
-            "en": "4335h"
         }
     }
 }
