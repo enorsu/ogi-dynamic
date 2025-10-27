@@ -93,17 +93,20 @@ def addgames():
     data = flask.request.form
     if not data["passkey"] == passkey:
         return "not authorized"
-        
+
     gm = generateGame(title=data["title"], desc=data["desc"], dl_en=data["dl-en"], dl_fi=data["dl-fi"], cover=data["cover"], label=data["label"])
     addgame(gm)
-    return "done"
+    return flask.render_template("message.html", message="Succesfully added the game.")
 
 @app.route("/admin/gamemanager", methods=['POST', 'GET'])
 def gamemanager():
     if flask.request.method == "GET":
         return flask.render_template("gamemanager.html", game=generateGame("", "", "", "", "", ""))
     elif flask.request.method == "POST":
-        game = games[flask.request.form["game"]]
+        try:
+            game = games[flask.request.form["game"]]
+        except KeyError as err:
+            return flask.render_template("message.html", message=f"Game {err} not found")
         return flask.render_template("gamemanager.html", game=game)
 
 @app.route("/api/update", methods=["POST"])
