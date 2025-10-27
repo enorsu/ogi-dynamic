@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Old-Games Inc</title>
+        <link
+        rel="stylesheet"
+        href="https://unpkg.com/xp.css">
+        <link rel="stylesheet" href="/static/assets/css/index.css">
+        <script src="/static/assets/js/hrefbutton.js" defer></script>
+
+
+    </head>
+    <body>
+            <div class="header">
+                <h1>Old-Games Inc</h1>
+                <h3>downloads</h3>
+                <nav>
+                    <button aria-label="/static/index.html" class="href-btn">back to index</button>
+                </nav>
+                
+            </div>
+        <div class="main">
+
+            {% for item in games %}
+            <div class="window" style="width: 300px" aria-label="{{ games[item].label }}">
+            <div class="title-bar">
+                <div class="title-bar-text">{{ games[item].title }}</div>
+                <div class="title-bar-controls">
+
+                <button aria-label="Close" class="close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <img class="medium-img" src="{{ games[item].cover }}">
+                <br>
+
+                <br>
+                <p>{{ games[item].description }}</p>
+                <br>
+                <ul class="tree-view">
+                    <p>Downloads:</p>
+                    <p class="download-btn fakelink" aria-label="{{ games[item].downloads.fi }}">Finnish version</p>
+                    <p class="download-btn fakelink" aria-label="{{ games[item].downloads.en }}">English version</p>
+                </ul>
+
+
+        </div>
+        {% endfor %}
+
+
+            
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+.main {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.medium-img {
+    width: 200px;
+}
+
+.tiny-img {
+    width:50px;
+}
+
+body {
+    background-color: #ECE9D8;
+    font-family: "Pixelated MS Sans Serif", Arial;
+}
+nav > button {
+    
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.header {
+    text-align: center;
+}
+.href-btn {
+    cursor: pointer;
+}
+.href-btn-disabled {
+    cursor: default;
+}
+
+
+.content {
+    text-align: center;
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+}
+
+.fakelink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+
+
+.href-btn {
+    scale: 1.25;
+}
