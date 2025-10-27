@@ -3,7 +3,7 @@ from flask import request
 from markupsafe import escape
 import json
 import logging
-
+from werkzeug.middleware.proxy_fix import ProxyFix
 # functions
 def loadJsonFile(filename, raw = False):
     with open("./data/" + filename, "r") as s:
@@ -54,6 +54,10 @@ def replaceGames(g: dict):
 initialize()
 
 app = flask.Flask(__name__)
+
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)
 
 
 # pages
@@ -114,4 +118,3 @@ def page_not_found(e):
 
 
 
-app.run(port=8000)
