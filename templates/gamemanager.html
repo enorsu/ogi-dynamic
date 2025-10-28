@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="/static/assets/css/index.css">
         <link rel="stylesheet" href="/static/assets/css/about.css">
         <link rel="stylesheet" href="/static/assets/css/special.css">
-        <script src="/assets/js/hrefbutton.js" defer></script>
+        <script src="/static/assets/js/hrefbutton.js" defer></script>
 
     </head>
     <body>
@@ -22,47 +22,75 @@
         </div>
         <br>
         <div class="main">
-        <form method="post" action="/admin/gamemanager">
-            <input type="text" placeholder="game number" name="game">
-            <button type="submit">load</button>
-        </form>
-        <form method="post" action="/api/addgame" class="form">
-            <label for="title" >title:</label>
-            <input type="text" name="title" value="{%+ if game %} {{ game['title'] }} {% endif %}">
+            <form method="post" action="/admin/gamemanager" id="loader" name="loader">
+                <input type="text" placeholder="id" style="width: 50px;" name="game">
+                <button type="submit" form="loader" >load existing</button>
+            </form>
+            <div class="window" style="width: 315px">
+            <div class="title-bar">
+                <div class="title-bar-text">gamemanager</div>
+                <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+                </div>
+            </div>
 
-            <br>
+            <div class="window-body" >
 
-            <label for="desc">desc:</label>
-            <textarea name="desc" id="desc" ></textarea>
+                    <form method="post" action="/api/addgame" class="form">
+                        <label for="title" >title:</label>
+                        <input type="text" name="title" value="{%+ if game %} {{ game['title'] }} {% endif %}">
 
-            <br>
+                        <br>
 
-            <label for="cover">cover art link:</label>
-            <input type="text" name="cover" value="{%+ if game %} {{ game['cover'] }} {% endif %}">
+                        <label for="desc">desc:</label>
+                        <textarea name="desc" id="desc" ></textarea>
 
-            <br>
+                        <br>
 
-            <label for="dl-fi">dl-fi:</label>
-            <input type="text" name="dl-fi" value="{%+ if game %}  {{ game['downloads']['fi'] }} {% endif %}">
+                        <label for="cover">cover art link:</label>
+                        <input type="text" name="cover" value="{%+ if game %} {{ game['cover'] }} {% endif %}">
 
-            <br>
+                        <br>
 
-            <label for="dl-en">dl-en:</label>
-            <input type="text" name="dl-en" value="{%+ if game %} {{ game['downloads']['en'] }} {% endif %}">
+                        <label for="dl-fi">dl-fi:</label>
+                        <input type="text" name="dl-fi" value="{%+ if game %}  {{ game['downloads']['fi'] }} {% endif %}">
 
-            <br>
 
-            <label for="label">label:</label>
-            <input type="text" name="label" value="{%+ if game %} {{ game['label'] }} {% endif %}">
+                        <br>
 
-            <br>
+                        <label for="dl-en">dl-en:</label>
+                        <input type="text" name="dl-en" value="{%+ if game %} {{ game['downloads']['en'] }} {% endif %}">
 
-            <label for="passkey">passkey:</label>
-            <input type="password" name="passkey">
-            <br>
-            <button type="submit" style="cursor: pointer;" class="form-btn">submit</button>
-        </form>
-        </div>
+                        <br>
+
+                        <label for="label">label:</label>
+                        <input type="text" name="label" value="{%+ if game %} {{ game['label'] }} {% endif %}">
+
+                        <br> 
+                        <br>
+                        <div class="field-row">
+                        <input checked type="checkbox" id="replace">
+                        <label for="replace">replace?</label>
+                        
+                        <label for="id">id:</label>
+                        <input type="text" name="id" style="width: 50px;">
+
+
+                        </div>
+
+                        <br>
+
+                        <label for="passkey">passkey:</label>
+                        <input type="password" name="passkey">
+                        <br>
+                        <button type="submit" style="cursor: pointer;" class="form-btn">submit</button>
+                    </form>
+                    </div>
+            </div>
+            </div>
+
         {% if game["description"] +%}
         <script>
             document.getElementById("desc").value = "{{ game['description'] }}"

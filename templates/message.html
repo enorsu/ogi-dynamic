@@ -16,6 +16,12 @@
         <div class="header">
             <h1>Old-Games Inc</h1>
             <h2>{{ message }}</h2>
+
+            {% if url +%}
+            <nav>
+                <button aria-label="{{ url }}" class="href-btn">back</button>
+            </nav>
+            {% endif %}
         </div>
     </body>
 </html>

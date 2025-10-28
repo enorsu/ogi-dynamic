@@ -49,9 +49,6 @@ def replaceGames(g: dict):
         file.write(json.dumps(g, indent=4))
 
 
-
-
-
 # init app
 initialize()
 
@@ -70,9 +67,10 @@ def index():
 @app.route("/pages/downloads")
 def downloads():
     temp = games
-    print(temp)
-    temp.pop("counter") 
-    print(temp)
+    try:
+        temp.pop("counter")
+    except KeyError:
+        pass
     return flask.render_template("dl.html", games=temp)
 
 @app.route("/form")
@@ -92,7 +90,7 @@ def downloadsraw():
 def addgames():
     data = flask.request.form
     if not data["passkey"] == passkey:
-        return "not authorized"
+        return flask.render_template("message.html", message="You are not authorized.")
 
     gm = generateGame(title=data["title"], desc=data["desc"], dl_en=data["dl-en"], dl_fi=data["dl-fi"], cover=data["cover"], label=data["label"])
     addgame(gm)
@@ -106,8 +104,8 @@ def gamemanager():
         try:
             game = games[flask.request.form["game"]]
         except KeyError as err:
-            return flask.render_template("message.html", message=f"Game {err} not found")
-        return flask.render_template("gamemanager.html", game=game)
+            return flask.render_template("message.html", message=f"Game {err} not found", url="/admin/gamemanager")
+        return flask.render_template("gamemanager.html", game=game, url="/admin/gamemanager")
 
 @app.route("/api/update", methods=["POST"])
 def update():
