@@ -1,5 +1,5 @@
 {
-    "counter": 5,
+    "counter": 6,
     "1": {
         "title": "Juhannuskauppa2025",
         "label": "Juhannuskauppa2025",
@@ -11,43 +11,12 @@
         }
     },
     "2": {
-        "title": "Juhannuskauppa2025",
-        "label": "Juhannuskauppa2025",
+        "title": "juhanussii kauppaa",
+        "desc": "juha nus kaoupa",
         "cover": "/static/assets/covers/JuhannusKauppa2025.png",
-        "description": "juha nus kaoupa",
-        "downloads": {
-            "en": "no",
-            "fi": "no"
-        }
-    },
-    "3": {
-        "title": "eeee",
-        "label": "eee",
-        "cover": "eeee",
-        "description": "eeeee",
-        "downloads": {
-            "fi": "eeee",
-            "en": "eee"
-        }
-    },
-    "4": {
-        "title": " Juhannuskauppa2025 ",
-        "label": " Juhannuskauppa2025 ",
-        "cover": " /static/assets/covers/JuhannusKauppa2024.png ",
-        "description": "juha nus kaoupa",
-        "downloads": {
-            "fi": "  no ",
-            "en": " no "
-        }
-    },
-    "5": {
-        "title": " Juhannuskauppa2025 ",
-        "label": " Juhannuskauppa2025 ",
-        "cover": " /static/assets/covers/JuhannusKauppa2025.png ",
-        "description": "juha nus kaoupa",
-        "downloads": {
-            "fi": "  no ",
-            "en": " no "
-        }
+        "dl-fi": "no",
+        "dl-en": "no",
+        "label": "Juhannuskauppa2025",
+        "passkey": "t"
     }
 }

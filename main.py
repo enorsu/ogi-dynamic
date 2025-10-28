@@ -44,9 +44,17 @@ def addgame(game: dict):
         s.write(json.dumps(js, indent=4))
     refreshGamesJson()
 
-def replaceGames(g: dict):
-    with open("./data/games.json", "w") as file:
-        file.write(json.dumps(g, indent=4))
+def replaceGame(id, g: dict):
+    with open("./data/games.json", "r") as i:
+        js = json.loads(i.read())
+    
+    # note: don't give invalid games
+    # it fucks up everything
+    js.update({str(id): g})
+    with open("./data/games.json", "w") as s:
+        s.write(json.dumps(js, indent=4))
+    refreshGamesJson()    
+
 
 
 # init app
@@ -90,8 +98,20 @@ def downloadsraw():
 def addgames():
     data = flask.request.form
     if not data["passkey"] == passkey:
-        return flask.render_template("message.html", message="You are not authorized.")
+        return flask.render_template("message.html", message="You are not authorized.", url="/static/index.html")
+    if 'replace' in data.keys() and 'id' in data.keys():
+        if data["id"] in games.keys():
+            data = dict(data)
+            id = data["id"]
+            data.pop("id")
+            data.pop("replace")
 
+            replaceGame(id, data)
+            
+            return flask.render_template("message.html", message="Succesfully replaced game.", url="/admin/gamemanager")
+        else:
+            return flask.render_template("message.html", message="Failed to replace game.(Incorrect ID?)", url="/admin/gamemanager")
+    # add normally
     gm = generateGame(title=data["title"], desc=data["desc"], dl_en=data["dl-en"], dl_fi=data["dl-fi"], cover=data["cover"], label=data["label"])
     addgame(gm)
     return flask.render_template("message.html", message="Succesfully added the game.")
